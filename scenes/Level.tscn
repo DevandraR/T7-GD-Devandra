@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://65h4c0mrp6k7"]
+[gd_scene load_steps=10 format=3 uid="uid://65h4c0mrp6k7"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Box.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://324gqmlwp7gs" path="res://scenes/Player.tscn" id="2_jg2du"]
+[ext_resource type="Script" path="res://scripts/Switch.gd" id="2_lhjpw"]
 
 [sub_resource type="StandardMaterial3D" id="3"]
 albedo_color = Color(0.498039, 0.498039, 0.498039, 1)
@@ -67,6 +69,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25.0375)
 mesh = SubResource("4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Switch"]
+script = ExtResource("2_lhjpw")
+light = NodePath("../../OmniLight3D")
+energy_when_on = 30
+energy_when_off = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Switch/StaticBody3D"]
 shape = SubResource("5")
+
+[node name="Player" parent="." instance=ExtResource("2_jg2du")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10672, 0)

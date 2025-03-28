@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccn02x3fwwbp"]
+
+[ext_resource type="Script" path="res://scripts/area_condition.gd" id="1_n55tm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t6wn0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c7lgg"]
+
+[node name="AreaCondition" type="Area3D"]
+script = ExtResource("1_n55tm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t6wn0")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("SphereMesh_c7lgg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

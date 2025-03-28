@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://c87su3lfysdcn"]
+
+[ext_resource type="PackedScene" uid="uid://cia8l8ngnt4fb" path="res://scenes/world_1.tscn" id="1_flx0q"]
+[ext_resource type="PackedScene" uid="uid://324gqmlwp7gs" path="res://scenes/Player.tscn" id="2_s2et7"]
+[ext_resource type="PackedScene" uid="uid://c3bacn0pp5k4n" path="res://scenes/ObjLamp.tscn" id="3_v54ev"]
+[ext_resource type="PackedScene" uid="uid://ccn02x3fwwbp" path="res://scenes/AreaCondition.tscn" id="4_mkxq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok4nq"]
+
+[node name="Level 1" type="Node3D"]
+
+[node name="World 1" parent="." instance=ExtResource("1_flx0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1766, 0)
+
+[node name="CSGBox3D" parent="World 1/CSGCombiner3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.0386, -22.9818)
+operation = 0
+size = Vector3(8, 7, 31.1326)
+
+[node name="CSGBox3D2" parent="World 1/CSGCombiner3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0740795, -11.1708, -16.6193)
+size = Vector3(10, 9.0835, 5.10693)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World 1/CSGCombiner3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.02409, -0.00572002)
+use_collision = true
+flip_faces = true
+size = Vector3(10, 9, 15)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="World 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105748, -2.95215, -16.5327)
+use_collision = true
+size = Vector3(2.37158, 1, 1)
+material = SubResource("StandardMaterial3D_ok4nq")
+
+[node name="Player" parent="World 1" instance=ExtResource("2_s2et7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06582, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57439, 0)
+omni_range = 20.0
+
+[node name="ObjLamp" parent="World 1" instance=ExtResource("3_v54ev")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 2.17053, -1.94768, 3.58169)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55029, -28.507)
+omni_range = 25.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="World 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61298, -13.8977)
+omni_range = 15.0
+
+[node name="WinCondition" parent="." instance=ExtResource("4_mkxq8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0486765, 1.68985, -37.4956)
+sceneName = "WinScreen"
+
+[node name="LoseCondition" parent="." instance=ExtResource("4_mkxq8")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.240692, -14.9161, -16.7663)
+visible = false
+
+[editable path="World 1"]
